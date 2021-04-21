@@ -1,8 +1,0 @@
-{
-    "todo": {
-      "title": "string",
-      "priority": "int",
-      "completed": "string",
-      "createdAt": "date"
-    }
-}
