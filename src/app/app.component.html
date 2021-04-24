@@ -34,5 +34,14 @@
 
 <router-outlet>
   <div>router</div>
+  <tbody>
+    <tr *ngFor="let todo of tasks">
+      <td>{{todo.id}}</td>
+      <td>{{todo.description}}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    <tr>
+  </tbody>
 </router-outlet>
 
