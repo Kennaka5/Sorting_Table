@@ -6,6 +6,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import * as TaskReducer  from './todotable/todoTableReducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import * as TaskReducer  from './todotable/todoTableReducer';
     StoreModule.forRoot({
       task: TaskReducer.reducer
     }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [],
   bootstrap: [AppComponent]
