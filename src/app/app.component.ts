@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from './rest.service';
 import {Tasks} from './tasks';
+import { Store, select } from '@ngrx/store';
+import {retrievedTaskList} from './../app/todotable/todoTableActions'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,18 +10,17 @@ import {Tasks} from './tasks';
 })
 export class AppComponent implements OnInit{
   title = 'SortingTable';
- constructor(private rs: RestService) {}
+ constructor(
+  private RestService: RestService,
+  private store: Store
+) {}
 
- tasks: Tasks[] = [];
+
 
  ngOnInit() {
-   this.rs.getTasks().subscribe(
-     (response) => {
-       this.tasks = response;
-       console.log(this.tasks)
-     }
-   )
- }
-
+  this.RestService
+    .getTasks()
+    .subscribe((Tasks) => this.store.dispatch(retrievedTaskList({ Tasks })));
+}
 }
 

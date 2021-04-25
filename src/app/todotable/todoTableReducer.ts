@@ -1,20 +1,14 @@
 import { Tasks } from './../tasks';
-import { createReducer, on } from '@ngrx/store';
-import {increment} from './todoTableActions'
+import { createReducer, on, Action } from '@ngrx/store';
+import {retrievedTaskList} from './todoTableActions'
 
-const initalState : Tasks = 
-    {
-        id: '1',
-        priority: '1',
-        description: "build data",
-        status: 1,
-        createdAt: "date"
-    };
+const initalState : Array<Tasks> = [];
 
 const _taskReducer = createReducer(
-    initalState, on(increment ,state => state)
+    initalState, on(retrievedTaskList ,(state, { Tasks }) => [...Tasks])
 );
 
 export function reducer(state, action) {
     return _taskReducer(state, action)
 }
+

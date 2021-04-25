@@ -1,3 +1,6 @@
-import { createAction } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 
-export const increment = createAction('[Counter Component] Increment');
+export const retrievedTaskList = createAction(
+    '[Task List/API] Retrieve Task Success',
+    props<{ Tasks }>()
+  );

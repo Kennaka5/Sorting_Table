@@ -16,6 +16,6 @@ export class RestService {
 
     getTasks(): Observable<Tasks[]> {
       return this.http.get<Tasks[]>(this.url)
+      .pipe(map((tasks) => tasks || []));
     }
-
-}
+  }
