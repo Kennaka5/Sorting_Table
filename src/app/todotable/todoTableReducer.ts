@@ -5,7 +5,7 @@ import {retrievedTaskList} from './todoTableActions'
 const initalState : Array<Tasks> = [];
 
 const _taskReducer = createReducer(
-    initalState, on(retrievedTaskList ,(state, { Tasks }) => [...Tasks])
+    initalState, on(retrievedTaskList ,(state, { tasks }) => [...tasks])
 );
 
 export function reducer(state, action) {

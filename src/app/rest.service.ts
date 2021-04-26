@@ -14,7 +14,7 @@ export class RestService {
   // https://balramchavan.medium.com/configure-and-build-angular-application-for-different-environments-7e94a3c0af23
     url : string = 'http://localhost:3000/tasks'
 
-    getTasks(): Observable<Tasks[]> {
+    getTasks(): Observable<Array<Tasks>> {
       return this.http.get<Tasks[]>(this.url)
       .pipe(map((tasks) => tasks || []));
     }

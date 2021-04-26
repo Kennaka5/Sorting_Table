@@ -1,5 +1,6 @@
-<div class="row">
-    <div class="column"></div>
-    <div class="column"></div>
-    <div class="column"></div>
-  </div>
+<div
+  class="book-item"
+  *ngFor="let task of Tasks"
+>
+  <p>{{task.id}}</p>
+</div>
