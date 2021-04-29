@@ -1,7 +1,7 @@
 export interface Tasks 
 {
-    id: string;
-    priority: string;
+    id: number;
+    priority: number;
     description: string;
     status: number;
     createdAt: string;

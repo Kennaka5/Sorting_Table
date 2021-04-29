@@ -4,6 +4,8 @@ import {Tasks} from './tasks';
 import { Store, select } from '@ngrx/store';
 import {retrievedTaskList} from './../app/todotable/todoTableActions'
 import {selectTasks} from './app-tasks.selectors'
+import { AppState } from './../app/app-state.model'
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,12 +13,12 @@ import {selectTasks} from './app-tasks.selectors'
 })
 export class AppComponent implements OnInit{
   title = 'SortingTable';
-  //tasks$ = this.store.pipe(select(selectTasks));
+  tasks$ = this.store.pipe(select(selectTasks));
 
 
  constructor(
   private RestService: RestService,
-  private store: Store
+  private store: Store<AppState>
 ) {}
 
 
@@ -26,5 +28,6 @@ export class AppComponent implements OnInit{
     .getTasks()
     .subscribe((tasks) => this.store.dispatch(retrievedTaskList({ tasks })));
 }
+
 }
 
