@@ -1,22 +1,36 @@
 import { Tasks } from './../tasks';
-import { createReducer, on, Action } from '@ngrx/store';
-import {retrievedTaskList} from './todoTableActions'
+import { createReducer, on, Action, State } from '@ngrx/store';
+import {
+  retrievedTaskList,
+  retrievedTaskListPending,
+} from './todoTableActions';
+import { AppState } from './app.state';
 
-const initalState : Array<Tasks> = [//{
-// "id": 1,
-// "priority": 1,
-// "description": "build data",
-// "status": 1,
-// "createdAt": "date"
-// }
-];
-
-const _taskReducer = createReducer(
-    initalState, on(retrievedTaskList ,(state, { tasks }) => [...tasks])
-);
-
-export function reducer(state, action) {
-    console.log(state, action)
-    return _taskReducer(state, action)
+export interface TaskState {
+  tasks: Array<Tasks>;
+  loading: boolean;
 }
 
+const initialState: TaskState = {
+  tasks: [],
+  loading: false,
+};
+
+// https://ngrx.io/guide/store/walkthrough
+
+export const taskReducer = createReducer(
+  initialState,
+  on(retrievedTaskListPending, (state, action) => {
+    console.log('retrievedTaskListPending', state, action);
+    return { ...state, loading: true };
+  }),
+  on(retrievedTaskList, (state, action) => {
+    console.log('retrievedTaskList', state, action);
+    return { ...state, tasks: action.tasks, loading: false };
+  })
+  // on(retrievedTaskList, (state, {tasks}) => tasks)
+);
+
+// export function reducer(state: TaskState | undefined, action: Action) {
+// return _taskReducer(state, action);
+// }

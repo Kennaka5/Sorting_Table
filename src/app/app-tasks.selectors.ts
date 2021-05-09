@@ -1,17 +1,20 @@
 import { createSelector, createFeatureSelector } from "@ngrx/store";
-import { AppState } from "./app-state.model";
+import { AppState } from './../app/todotable/app.state';
 import { Tasks } from './tasks';
+import { TaskState } from "./todotable/todoTableReducer";
  
 export const selectTasks = createSelector(
-  (state: AppState) => state.tasks,
-  (tasks: Array<Tasks>) => tasks
+  (state: AppState) => {
+    console.log('selectTasks', state);
+    return state.tasks;
+  },
+  (tasks: TaskState) => tasks.tasks
 );
 
 // export const selectCollectionState = createFeatureSelector<
 //   AppState,
 //   ReadonlyArray<string>
 // >("collection");
-
  
 // export const selectBookCollection = createSelector(
 //   selectTasks,
