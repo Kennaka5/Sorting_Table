@@ -32,18 +32,22 @@
 <!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<router-outlet>
+<router-outlet></router-outlet>
   <div>router</div>
-  <tbody>
-    <tr *ngFor="let todo of tasks$ | async">
-      <td>{{todo.id}}</td>
-      <td>{{todo.description}}</td>
-      <td></td>
-      <td></td>
-      <td></td>
+  <div class="row">
+  <div class="column">
+  <tbody cdkDropList class="example-list" [cdkDropListData]="tasksPending" (cdkDropListDropped)="drop($event)">
+    <tr class="example-box" *ngFor="let todo of tasksPending" cdkDrag>
+      {{todo.id}}{{todo.description}}
     <tr>
   </tbody>
-</router-outlet>
+  <!-- <tbody cdkDropList class="example-list" [cdkDropListData]="tasks$">
+    <tr class="example-box" *ngFor="let to of todos$ | async" cdkDrag>
+      {{to.id}}{{to.description}}
+    <tr>
+  </tbody> -->
+</div>
+</div>
 <h2>Books</h2>
-<!-- <app-book-list class="book-list" [Tasks]="tasks$ | async"></app-book-list> -->
+<!-- <app-book-list class="book-list" [Tasks]="tasks$ | async"></app-book-list> (cdkDropListDropped)="drop($event)" -->
 

@@ -12,6 +12,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { GetTaskListEffects } from './todotable/todo.effects'
 import { AppState } from './todotable/app.state';
 import { taskReducer } from './todotable/todoTableReducer';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { taskReducer } from './todotable/todoTableReducer';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    DragDropModule,
     EffectsModule.forRoot([GetTaskListEffects]),
     // https://medium.com/@aravindfz/setting-up-storemodule-in-ngrx-4-0-b7c60732aa64
     StoreModule.forRoot({

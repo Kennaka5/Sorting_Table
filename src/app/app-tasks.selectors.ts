@@ -1,15 +1,24 @@
 import { createSelector, createFeatureSelector } from "@ngrx/store";
 import { AppState } from './../app/todotable/app.state';
-import { Tasks } from './tasks';
 import { TaskState } from "./todotable/todoTableReducer";
  
 export const selectTasks = createSelector(
   (state: AppState) => {
-    console.log('selectTasks', state);
+    console.log('selectTasks', state.tasks);
     return state.tasks;
   },
   (tasks: TaskState) => tasks.tasks
 );
+
+// export const unstartedTasks = createSelector(
+//   (state: AppState) => {
+//     console.log('selectTasks', state.tasks);
+//     return state.tasks;
+//   },
+//   (tasks: TaskState) => {
+//      tasks.tasks
+//   }
+// );
 
 // export const selectCollectionState = createFeatureSelector<
 //   AppState,

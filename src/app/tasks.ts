@@ -1,5 +1,4 @@
-export interface Tasks 
-{
+export interface Tasks {
     id: number;
     priority: number;
     description: string;
